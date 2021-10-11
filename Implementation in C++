@@ -1,0 +1,97 @@
+#include <iostream>
+#include <climits>
+
+using namespace std;
+class Stack{
+    int top;
+    int max;
+    int* a;
+public:
+    Stack(int size){
+        top=-1;
+        max = size;
+        a = new int[max];
+    }
+    bool push(int x);
+    int pop();
+    int peek();
+    bool isFull();
+    bool isEmpty();
+    void display();
+};
+bool Stack::push(int x){
+    if(isFull()){
+        return false;
+    }
+    else{
+        top++;
+        a[top]=x;
+        return true;
+    }
+    
+}
+int Stack :: pop(){
+    if(isEmpty()){
+        return INT_MIN;
+    }
+    else{
+       int del_item=a[top--];
+       return del_item;
+    }
+    
+}
+int Stack::peek(){
+    if(isEmpty()){
+        return INT_MIN;
+    }
+    else{
+      return a[top];
+    }
+}
+bool Stack :: isFull(){
+    if(top==max-1){
+        cout<<"OVERFLOW"<<endl;
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool Stack :: isEmpty(){
+    if(top==-1){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+void Stack:: display(){
+    if(isEmpty()){
+        return;
+    }
+    else{
+    for(int i=top;i>=0;i--){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    }
+    
+}
+int main()
+{
+    Stack s(5);
+    s.push(5);
+    s.push(7);
+    s.push(6);
+     s.push(7);
+    s.push(6);
+    s.push(6);
+    s.display();
+    cout<<s.peek()<<endl;
+    s.pop();
+    cout<<s.peek()<<endl;
+     s.display();
+    
+
+    return 0;
+}
