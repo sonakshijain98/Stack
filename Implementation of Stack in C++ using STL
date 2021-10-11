@@ -1,0 +1,22 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+int main()
+{
+    stack<int> s;
+    s.push(6);
+    s.push(8);
+    s.push(9); //void return type function
+    cout<<s.size()<<endl; //for size
+    cout<<s.top()<<endl; //for top elemnt
+    cout<<s.size()-1<<endl; //for indexing
+    s.pop();   // return void type in C++ (in all other lang return type is int)
+    cout<<s.size()<<endl;
+    cout<<s.empty()<<endl; //returns int
+    while(!s.empty()){ // for display there is only this way
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    cout<<endl;
+    return 0;
+}
