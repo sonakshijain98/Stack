@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+struct Stack{
+    int top;
+    int size;
+    int* arr;
+};
+struct Stack* Create(int item){
+    struct Stack* stack=(struct Stack*)malloc(sizeof(struct Stack));
+    stack->size=item;
+    stack->top=-1;
+    stack->arr=(int*)malloc(sizeof(int)*stack->size);
+    return stack;
+}
+int isEmpty(struct Stack* stack){
+    if(stack->top==-1){
+        printf("\nIs Empty, UnderFlow");
+        return 1;
+    }
+    else{
+        printf("\nNot Empty");
+        return 0;
+    }
+}
+int isFull(struct Stack* stack){
+    if(stack->size-1==stack->top){
+        printf("\n Is Full, OVERFLOW");
+        return 1;
+    }
+    else{
+        printf("\nNot Full");
+        return 0;
+    }
+}
+void push(struct Stack* stack,int item){
+    if(isFull(stack)){
+        return;
+    }
+    else{
+        stack->arr[++stack->top]=item;
+        printf("%d",stack->arr[stack->top]);
+    }
+}
+int pop(struct Stack* stack){
+    int item;
+    item = stack->arr[stack->top--];
+    printf("%d",item);
+    return item;
+}
+int peek(struct Stack* stack){
+    if(isEmpty(stack)){
+        return INT_MIN;
+    }
+    return stack->arr[stack->top];
+}
+int size(struct Stack* stack){
+    return (stack->top+1);
+}
+
+int main()
+{
+    struct Stack *stack = Create(15);
+    push(stack,6);
+    printf("\n%d",size(stack));
+    isEmpty(stack);
+    printf("\n%d",peek(stack));
+    isEmpty(stack);
+    printf("\n%d",size(stack));
+    
+    
+
+    return 0;
+}
