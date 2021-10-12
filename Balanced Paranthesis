@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+bool CheckPair(int val1, int val2){
+    return (val1=='{' && val2=='}') || (val1=='[' && val2==']') || (val1=='(' && val2==')');
+}
+bool BalancedBracket(string str){
+    stack<int> St;
+    for(int i=0;i<str.length();i++){
+        if(str[i]=='{' || str[i]=='[' || str[i]=='('){
+            St.push(str[i]);
+        }
+        else{
+            if(St.empty()){
+                return false;
+            }
+            else if(CheckPair(St.top(),str[i])){
+                St.pop();
+                continue;
+            }
+            return false;
+        }
+    }
+    if(St.empty()){
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+}
+int main()
+{
+   string str="()";
+   if(BalancedBracket(str)){
+       cout<<"Balanced"<<endl;
+   }
+   else{
+       cout<<"UNBalanced"<<endl;
+   }
+    
+
+    return 0;
+}
