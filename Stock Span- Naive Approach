@@ -1,0 +1,26 @@
+#include <iostream>  //O(n^2)-time complexity
+#include <stack>
+using namespace std;
+
+void StockSpan(int arr[],int size){
+   stack<int> st;
+   for(int i=0;i<size;i++){
+       int count=1;
+       for(int j=i-1;j>=0 && arr[j]<=arr[i];j--){
+           count++;
+       }
+       cout<<count<<" ";
+   }
+    
+}
+int main()
+{
+  int arr[10];
+  for(int i=0;i<10;i++){
+      cin>>arr[i];
+  }
+  StockSpan(arr,10);
+    
+
+    return 0;
+}
