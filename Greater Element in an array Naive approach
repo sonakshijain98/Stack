@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+void NextGreater(int arr[], int size){
+    for(int i=0;i<size;i++){
+           bool flag=false;
+           for(int j=i+1;j<size;j++){
+               if(arr[i]<arr[j]){
+                   cout<<arr[j]<<" ";
+                   flag=true;
+                   break;
+               }
+           }
+           if(flag==false){
+               cout<<"- ";
+           }
+    }
+}
+int main() {
+    // Write C++ code here
+  int arr[11];
+  for(int i=0;i<11;i++){
+      cin>>arr[i];
+  }
+  NextGreater(arr,11);
+    return 0;
+}
